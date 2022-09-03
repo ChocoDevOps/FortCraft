@@ -40,7 +40,7 @@ public class GamePersistenceHandler implements PersistenceHandler<Game> {
      * @param path Path used to save specified object
      */
     @Override
-    public void serialize(Game game, Path path) throws IOException {
+    public void serialize(Game game) throws IOException {
         Path gamePath = Paths.get(basePath.getPath(), game.getName() + ".json");
 
         gson.toJson(game, new FileWriter(gamePath.toFile()));
