@@ -16,7 +16,7 @@ public class GameHandler {
      */
     private static GameHandler instance;
 
-    private PersistenceHandler<Game> persistenceHandler;
+    private final PersistenceHandler<Game> persistenceHandler;
 
     /**
      * List of available games

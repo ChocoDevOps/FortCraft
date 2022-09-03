@@ -17,12 +17,12 @@ public class GamePersistenceHandler implements PersistenceHandler<Game> {
     /**
      * Gson object, to handle json in persistence logic
      */
-    private Gson gson;
+    private final Gson gson;
 
     /**
      * Base path for saving serialized games
      */
-    private File basePath;
+    private final File basePath;
 
     /**
      * Initialize instance fields

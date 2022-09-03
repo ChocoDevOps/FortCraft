@@ -8,7 +8,7 @@ public class GameLoop implements Runnable {
     /**
      * Game that should be handled in this instance of GameLoop
      */
-    private Game game;
+    private final Game game;
 
     /**
      * Constructor for game loop
