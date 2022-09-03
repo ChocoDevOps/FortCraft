@@ -5,6 +5,9 @@ package me.lorenzo.fortcraft.game;
  */
 public class GameLoop implements Runnable {
 
+    /**
+     * Game that should be handled in this instance of GameLoop
+     */
     private Game game;
 
     /**
