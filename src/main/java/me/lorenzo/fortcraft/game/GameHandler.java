@@ -16,7 +16,10 @@ public class GameHandler {
      */
     private static GameHandler instance;
 
-    private final PersistenceHandler<Game> persistenceHandler;
+    /**
+     * Handler to save and load games from storage
+     */
+    private final GamePersistenceHandler persistenceHandler;
 
     /**
      * List of available games
