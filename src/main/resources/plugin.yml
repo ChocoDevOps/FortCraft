@@ -1,0 +1,6 @@
+name: FortCraft
+version: '${project.version}'
+main: me.lorenzo.fortcraft.FortCraft
+api-version: 1.19
+authors: [ TheLore ]
+description: Fortcraft plugin for ErenBlaze
