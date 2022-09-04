@@ -1,5 +1,10 @@
 package me.lorenzo.fortcraft.game;
 
+import me.lorenzo.fortcraft.bukkit.BukkitLocation;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Model for {@link me.lorenzo.fortcraft.FortCraft FortCraft} game instance
  */
@@ -20,6 +25,11 @@ public class Game {
     private int minPlayers;
 
     /**
+     * List of locations where players will be spawned at the join
+     */
+    private List<BukkitLocation> spawnLocations;
+
+    /**
      * Constructor for Game model used for setup purposes
      * @param name The name of the game (Map)
      * @param minPlayers Minimum players to start the game
@@ -29,6 +39,7 @@ public class Game {
         this.name = name;
         this.minPlayers = minPlayers;
         this.maxPlayers = maxPlayers;
+        this.spawnLocations = new ArrayList<>();
     }
 
     public String getName() {
@@ -53,6 +64,10 @@ public class Game {
 
     public void setMinPlayers(int minPlayers) {
         this.minPlayers = minPlayers;
+    }
+
+    public void setSpawn(BukkitLocation bukkitLocation) {
+        this.spawnLocations.add(bukkitLocation);
     }
 
     @Override
