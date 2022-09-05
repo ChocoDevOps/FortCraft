@@ -1,6 +1,5 @@
 package me.lorenzo.fortcraft.game;
 
-import me.lorenzo.fortcraft.persistence.PersistenceHandler;
 import me.lorenzo.fortcraft.persistence.game.GamePersistenceHandler;
 
 import java.util.ArrayList;
@@ -28,10 +27,11 @@ public class GameHandler {
 
     /**
      * Creates or retrieves {@link GameHandler GameHandler} instance
+     *
      * @return GameHandler instance
      */
     public static GameHandler getInstance() {
-        if(instance == null)
+        if (instance == null)
             instance = new GameHandler();
         return instance;
     }
@@ -46,11 +46,12 @@ public class GameHandler {
 
     /**
      * Register a {@link Game Game} to gameList
+     *
      * @param game Game to be registered
      * @return True if it is successfully registered, false if something went wrong
      */
     public boolean addGame(Game game) {
-        if(findGameByName(game.getName()).isPresent()) return false;
+        if (findGameByName(game.getName()).isPresent()) return false;
 
         gameList.add(game);
         return true;
@@ -58,6 +59,7 @@ public class GameHandler {
 
     /**
      * Unregister a game
+     *
      * @param game Game to be unregistered
      */
     public void removeGame(Game game) {
@@ -66,6 +68,7 @@ public class GameHandler {
 
     /**
      * Find a {@link Game Game} by it's name
+     *
      * @param name Name of the game to be found
      * @return Game object with the name
      */
@@ -77,6 +80,7 @@ public class GameHandler {
 
     /**
      * Retrieves all the registered games
+     *
      * @return Full list of registered games
      */
     public List<Game> getGameList() {

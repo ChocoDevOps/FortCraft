@@ -31,7 +31,8 @@ public class Game {
 
     /**
      * Constructor for Game model used for setup purposes
-     * @param name The name of the game (Map)
+     *
+     * @param name       The name of the game (Map)
      * @param minPlayers Minimum players to start the game
      * @param maxPlayers Maximum players that can join a certain game
      */
@@ -42,34 +43,74 @@ public class Game {
         this.spawnLocations = new ArrayList<>();
     }
 
+    /**
+     * Get the name of the game
+     *
+     * @return game name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Set the game name
+     *
+     * @param name game name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Get maximum allowed players for this game
+     *
+     * @return maximum allowed players
+     */
     public int getMaxPlayers() {
         return maxPlayers;
     }
 
+    /**
+     * Set maximum allowed players for this game
+     *
+     * @param maxPlayers max players allowed
+     */
     public void setMaxPlayers(int maxPlayers) {
         this.maxPlayers = maxPlayers;
     }
 
+    /**
+     * Get minimum players to start the game
+     *
+     * @return minimum players to start the game
+     */
     public int getMinPlayers() {
         return minPlayers;
     }
 
+    /**
+     * Set minimum players to start the game
+     *
+     * @param minPlayers minimum players to start the game
+     */
     public void setMinPlayers(int minPlayers) {
         this.minPlayers = minPlayers;
     }
 
+    /**
+     * Set the initial spawn for this game
+     *
+     * @param bukkitLocation spawn for players when they join that game
+     */
     public void setSpawn(BukkitLocation bukkitLocation) {
         this.spawnLocations.add(bukkitLocation);
     }
 
+    /**
+     * Readable overriding of default toString method
+     *
+     * @return String representation of the current game object
+     */
     @Override
     public String toString() {
         return "Game{" +

@@ -12,6 +12,7 @@ public class GameLoop implements Runnable {
 
     /**
      * Constructor for game loop
+     *
      * @param game Game that should be handled in this instance
      */
     public GameLoop(Game game) {

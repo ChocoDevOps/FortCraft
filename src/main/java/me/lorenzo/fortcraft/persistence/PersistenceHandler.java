@@ -11,12 +11,14 @@ public interface PersistenceHandler<T> {
 
     /**
      * Save object into specified path
+     *
      * @param object Object to save in specified path
      */
     void serialize(T object) throws IOException;
 
     /**
      * Retrieve and deserialize object from specified path
+     *
      * @param path Path where object is located
      * @return Object deserialized
      */
