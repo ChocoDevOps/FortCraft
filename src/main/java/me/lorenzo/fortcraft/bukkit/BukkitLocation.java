@@ -31,7 +31,7 @@ public class BukkitLocation {
      * @param yaw     {@link Location Location} yaw
      * @param pitch   {@link Location Location} pitch
      */
-    private BukkitLocation(UUID worldId, double x, double y, double z, float yaw, float pitch) {
+    public BukkitLocation(UUID worldId, double x, double y, double z, float yaw, float pitch) {
         this.worldId = worldId;
         this.x = x;
         this.y = y;
@@ -72,5 +72,29 @@ public class BukkitLocation {
         float pitch = location.getPitch();
 
         return new BukkitLocation(uuid, x, y, z, yaw, pitch);
+    }
+
+    public UUID getWorldId() {
+        return worldId;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getZ() {
+        return z;
+    }
+
+    public float getYaw() {
+        return yaw;
+    }
+
+    public float getPitch() {
+        return pitch;
     }
 }

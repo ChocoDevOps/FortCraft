@@ -55,7 +55,7 @@ public class GameHandler {
         if (findGameByName(game.getName()).isPresent()) return false;
 
         if (findGameByWorldId(game.getWorldId()).isPresent()) return false;
-
+        
         gameList.add(game);
         return true;
     }

@@ -3,13 +3,17 @@ package me.lorenzo.fortcraft.persistence.game;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import me.lorenzo.fortcraft.FortCraft;
+import me.lorenzo.fortcraft.bukkit.BukkitLocation;
 import me.lorenzo.fortcraft.exception.PersistenceException;
 import me.lorenzo.fortcraft.game.Game;
 import me.lorenzo.fortcraft.persistence.PersistenceHandler;
+import me.lorenzo.fortcraft.serializer.BukkitLocationSerializer;
+import me.lorenzo.fortcraft.utils.FileUtils;
 
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,6 +38,7 @@ public class GamePersistenceHandler implements PersistenceHandler<Game> {
     public GamePersistenceHandler() {
         this.gson = new GsonBuilder()
                 .setPrettyPrinting()
+                .registerTypeAdapter(BukkitLocation.class, new BukkitLocationSerializer())
                 .create();
         this.basePath = new File(FortCraft.getInstance().getDataFolder(), "games");
     }
@@ -46,12 +51,8 @@ public class GamePersistenceHandler implements PersistenceHandler<Game> {
     @Override
     public void serialize(Game game) {
         Path gamePath = Paths.get(basePath.getPath(), game.getName() + ".json");
-        FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(gamePath.toFile());
-            if (!gamePath.toFile().exists()) {
-                gamePath.toFile().getParentFile().mkdirs();
-            }
+            FileWriter fileWriter = FileUtils.createFileWriter(gamePath.toFile());
 
             gson.toJson(game, fileWriter);
             fileWriter.close();
@@ -81,6 +82,7 @@ public class GamePersistenceHandler implements PersistenceHandler<Game> {
      * @return List of all available games as {@link Game Game} objects
      */
     public List<Game> fetchGames() {
+        if (basePath.listFiles() == null) return new ArrayList<>();
         return Arrays.stream(basePath.listFiles())
                 .map(file -> deserialize(file.toPath()))
                 .collect(Collectors.toList());
