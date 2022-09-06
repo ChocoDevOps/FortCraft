@@ -16,11 +16,7 @@
 
 package me.lorenzo.fortcraft;
 
-import me.lorenzo.fortcraft.bukkit.BukkitLocation;
-import me.lorenzo.fortcraft.game.Game;
 import me.lorenzo.fortcraft.game.GameHandler;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -55,17 +51,6 @@ public final class FortCraft extends JavaPlugin {
         instance = this;
 
         initGame();
-
-        Bukkit.getScheduler().runTaskLater(this, new Runnable() {
-            @Override
-            public void run() {
-                Game game = new Game("TestGame", 1, 100, Bukkit.getWorld("world").getUID());
-                game.setSpawn(BukkitLocation.fromLocation(
-                        new Location(Bukkit.getWorld("world"), 1, 1, 1)
-                ));
-                gameHandler.addGame(game);
-            }
-        }, 40);
     }
 
     /**
