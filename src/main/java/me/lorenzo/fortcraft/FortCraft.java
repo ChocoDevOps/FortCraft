@@ -1,5 +1,6 @@
 package me.lorenzo.fortcraft;
 
+import me.lorenzo.fortcraft.game.GameHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -11,6 +12,11 @@ public final class FortCraft extends JavaPlugin {
      * FortCraft plugin instance
      */
     private static FortCraft instance;
+
+    /**
+     * GameHandler instance for load/save purposes
+     */
+    private GameHandler gameHandler;
 
     /**
      * Returns the fortcraft plugin instance
@@ -27,6 +33,10 @@ public final class FortCraft extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        
+        this.gameHandler = GameHandler.getInstance();
+
+        gameHandler.loadGames();
     }
 
     /**
@@ -34,6 +44,6 @@ public final class FortCraft extends JavaPlugin {
      */
     @Override
     public void onDisable() {
-        instance = this;
+        gameHandler.saveGames();
     }
 }

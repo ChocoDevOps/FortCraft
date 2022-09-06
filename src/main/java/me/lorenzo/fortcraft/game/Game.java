@@ -4,6 +4,7 @@ import me.lorenzo.fortcraft.bukkit.BukkitLocation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Model for {@link me.lorenzo.fortcraft.FortCraft FortCraft} game instance
@@ -25,9 +26,19 @@ public class Game {
     private int minPlayers;
 
     /**
+     * Id of the world assigned to this Game instance
+     */
+    private UUID worldId;
+
+    /**
      * List of locations where players will be spawned at the join
      */
     private List<BukkitLocation> spawnLocations;
+
+    /**
+     * List of locations where players will be launched from
+     */
+    private List<BukkitLocation> launchLocations;
 
     /**
      * Constructor for Game model used for setup purposes
@@ -36,11 +47,13 @@ public class Game {
      * @param minPlayers Minimum players to start the game
      * @param maxPlayers Maximum players that can join a certain game
      */
-    public Game(String name, int minPlayers, int maxPlayers) {
+    public Game(String name, int minPlayers, int maxPlayers, UUID worldId) {
         this.name = name;
         this.minPlayers = minPlayers;
         this.maxPlayers = maxPlayers;
+        this.worldId = worldId;
         this.spawnLocations = new ArrayList<>();
+        this.launchLocations = new ArrayList<>();
     }
 
     /**
@@ -98,12 +111,39 @@ public class Game {
     }
 
     /**
+     * Returns worldId assigned to this Game instance
+     *
+     * @return worldId assigned to this Game instance
+     */
+    public UUID getWorldId() {
+        return worldId;
+    }
+
+    /**
      * Set the initial spawn for this game
      *
      * @param bukkitLocation spawn for players when they join that game
      */
     public void setSpawn(BukkitLocation bukkitLocation) {
         this.spawnLocations.add(bukkitLocation);
+    }
+
+    /**
+     * Returns a list of locations from which players can be launched
+     *
+     * @return list of locations from which players can be launched
+     */
+    public List<BukkitLocation> getLaunchLocations() {
+        return launchLocations;
+    }
+
+    /**
+     * Add new location to launchLocations list
+     *
+     * @param bukkitLocation Location to add
+     */
+    public void addLaunchLocation(BukkitLocation bukkitLocation) {
+        this.launchLocations.add(bukkitLocation);
     }
 
     /**
